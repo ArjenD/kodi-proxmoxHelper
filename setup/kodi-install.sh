@@ -145,6 +145,10 @@ cat >/usr/local/bin/preX-populate-input.sh  << __EOF__
 cat >/etc/X11/xorg.conf.d/10-lxc-input.conf << _EOF_
 Section "ServerFlags"
      Option "AutoAddDevices" "False"
+     Option "StandbyTime" "0"
+     Option "SuspendTime" "0"
+     Option "OffTime" "0"
+     Option "BlankTime" "0"
 EndSection
 _EOF_
 
