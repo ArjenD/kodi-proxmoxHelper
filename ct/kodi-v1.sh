@@ -235,9 +235,9 @@ export PCT_OPTIONS="
 "
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/tteck/Proxmox/main/ct/create_lxc.sh)" || exit
 
-msg_info "Pre-starting LXC Container"
+msg_info "Pre-starting LXC Container ${CTID}"
 pct start $CTID
-msg_ok "Pre-started LXC Container"
+msg_ok "Pre-started LXC Container ${CTID}"
 
 VIDEO_GID=$(pct exec ${CTID} getent group video | cut -d: -f3)
 RENDER_GID=$(pct exec ${CTID} getent group render | cut -d: -f3)
@@ -245,9 +245,9 @@ TTY_GID=$(pct exec ${CTID} getent group tty | cut -d: -f3)
 INPUT_GID=$(pct exec ${CTID} getent group input | cut -d: -f3)
 AUDIO_GID=$(pct exec ${CTID} getent group audio | cut -d: -f3)
 
-msg_info "Stopping LXC Container"
+msg_info "Stopping LXC Container ${CTID}"
 pct stop $CTID
-msg_ok "Stopped LXC Container"
+msg_ok "Stopped LXC Container ${CTID}"
 
 LXC_CONFIG=/etc/pve/lxc/${CTID}.conf
 cat <<EOF >> $LXC_CONFIG
